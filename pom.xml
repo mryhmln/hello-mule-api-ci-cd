@@ -16,7 +16,8 @@
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
 		<app.name>hello-mule-api-ci-cd</app.name>
 		<app.version>1.0.0-SNAPSHOT</app.version>
-		<app.packaging>mule-application</app.packaging>	</properties>
+		<app.packaging>mule-application</app.packaging>	
+	</properties>
 
 	<build>
 		<plugins>
@@ -28,24 +29,15 @@
 				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<artifact>${app.name}-${app.version}-${app.packaging}.jar</artifact>
 						<muleVersion>${app.runtime}</muleVersion>
 						<username>${anypoint.userName}</username>
 						<password>${anypoint.password}</password>
-						<applicationName>${application.name}</applicationName>
-						<businessGroup>${anypoint.businessGroup}</businessGroup>
-						<environment>${anypoint.environment}</environment>
-						<workerType>${ch.workertype}</workerType>
-						<region>${ch.region}</region>
-						<workers>${ch.workers}</workers>
+						<applicationName>${app.name}-mryhmln</applicationName>
+						<environment>Sandbox</environment>
+						<workerType>MICRO</workerType>
+						<region>us-east-2</region>
+						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
-						<properties>
-							<env>${env}</env>
-							<crypto.key>${crypto.key}</crypto.key>
-							<http.port>8081</http.port>
-							<anypoint.platform.client_id>${env.clientId}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${env.clientSecret}</anypoint.platform.client_secret>
-						</properties>
 					</cloudHubDeployment>				
 				</configuration>
 			</plugin>
