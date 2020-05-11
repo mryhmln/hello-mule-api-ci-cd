@@ -8,10 +8,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  USERNAME: ${{ secrets.username }}
-  PASSWORD: ${{ secrets.password }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -55,6 +51,9 @@ jobs:
       with:
         name: artifacts
     - name: Deploy to CloudHub
+      env:
+        USERNAME: ${{ secrets.username }}
+        PASSWORD: ${{ secrets.password }}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn mule:deploy -Dmule.artifact=$artifactName -Danypoint.userName="$USERNAME" -Danypoint.password="$PASSWORD"
